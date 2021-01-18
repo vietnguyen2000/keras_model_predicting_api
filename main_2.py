@@ -7,14 +7,19 @@ app = Flask(__name__)
 def home():
     return "Hello, myname is sang"
 
-@app.route("/predict/")
-def send():
+@app.route("/predict/", methods=['GET', 'POST'])
+def post():
     try:
-        url=request.args.get("url")
-        predicted_label = predict_image.predict(url)
-        return jsonify(label=predicted_label), 200
+        content = request.json
+        url_list = content["urls"]
+        label_list = []
+        for i in range(0,len(url_list)):
+            label_list.append(predict_image.predict(url_list[i]))
+        
+        url_label = list(zip(url_list,label_list))
+        return jsonify(label=url_label), 200
     except:
-        return jsonify(label="cannot predict"), 200
+        return jsonify(label="Error"), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
