@@ -3,6 +3,8 @@ from keras.preprocessing import image
 import tensorflow as tf
 import numpy as np
 import requests
+import glob
+import os
 
 # NOTE: uncomment this if train using GPU
 physical_devices = tf.config.list_physical_devices('GPU') 
@@ -22,9 +24,8 @@ class Model():
     def download_image_ipg(self, urls, file_path):
         for i, url in enumerate(urls):
             full_path = file_path + format(i, '04d') + '.png'
-            url = 'http://papers.xtremepapers.com/CIE/Cambridge%20IGCSE/Mathematics%20(0580)/0580_s03_qp_1.pdf'
             r = requests.get(url)
-            with open('0580_s03_qp_1.pdf', 'wb') as outfile:
+            with open(full_path, 'wb') as outfile:
                 outfile.write(r.content)
 
     def predict(self, urls):
@@ -42,4 +43,10 @@ class Model():
         classes = self.model.predict(images)
         # pred_name = CATEGORIES[np.argmax(classes, axis = 1)]
         pred_name = [CATEGORIES[i] for i in np.argmax(classes, axis = 1)]
+        self.delete_images(image_path)
         return pred_name
+
+    def delete_images(self, path):
+        files = glob.glob(path + '*')
+        for f in files:
+            os.remove(f)
