@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello, myname is sang"
+    return "Real estate image Tagging using Transfer Learning model"
 
 @app.route("/predict/", methods=['GET', 'POST'])
 def post():
