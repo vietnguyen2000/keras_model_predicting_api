@@ -1,10 +1,21 @@
 # api
-## Running main_2.py
-First, we run the main_2.py in a cmd prompt window
-## Running test.py
-Then, we open another cmd prompt window to run test.py
-![Image of Yaktocat](https://scontent.xx.fbcdn.net/v/t1.15752-9/139890322_821121131952288_2834252214550367763_n.png?_nc_cat=102&ccb=2&_nc_sid=58c789&_nc_ohc=O1kbC1XlT4sAX_nPV2N&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f35e63d33f8437d15fe2267ae0c4de80&oe=602BE0F1)
-## Test with 2 url
-We will use the two pictures below to predict
-![Image of Yaktocat](https://images.victoriaplum.com/blog/blogpost-covers/8263637c-99ce-4601-9c55-b758b088033a.jpg?auto=format%2Ccompress&q=55)
-![Image of Yaktocat](https://i.pinimg.com/originals/2e/97/26/2e97268107fd65dde1dc699381eea1ed.jpg)
+## Running app.py (Server)
+```
+python app.py
+```
+## Running test.py (For testing)
+Example:
+```
+python test.py
+URLs (seperated by comma): https://kitchenandbathshop.com/wp-content/uploads/2019/10/architecture-bath-bathroom-1910472-e1594115412789.jpg
+```
+## APIs
+Current address: **http://127.0.0.1:5000/predict/**
+
+Body of the request and response are both in JSON format.
+
+Example (calling the API with 2 images for prediction):
+
+![Request](https://2.pik.vn/2021903d0b73-6ed9-4369-9dbc-b71eb4cae01d.jpg)
+
+![Response](https://2.pik.vn/2021d3dcf428-cab4-4ee0-85dd-eb019ebffbc5.jpg)
