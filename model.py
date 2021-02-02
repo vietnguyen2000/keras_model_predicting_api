@@ -7,12 +7,13 @@ import glob
 import os
 
 # NOTE: uncomment this if train using GPU
-physical_devices = tf.config.list_physical_devices('GPU') 
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
+# physical_devices = tf.config.list_physical_devices('GPU') 
+# print(physical_devices)
+# tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 image_shape = 240
 
-model_path = "Trained_model"
+model_path = "./Trained_model"
 CATEGORIES = ['bathroom', 'bedroom', 'dining room', 'exterior', 'interior', 'kitchen', 'living room']
 # load the model we saved
 image_path = 'image_to_predict/'
@@ -20,6 +21,7 @@ image_path = 'image_to_predict/'
 class Model():
     def __init__(self):
         self.model = load_model(model_path)
+        # pass
 
     def download_image_ipg(self, urls, file_path):
         for i, url in enumerate(urls):
