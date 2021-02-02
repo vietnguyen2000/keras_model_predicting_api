@@ -1,7 +1,7 @@
 # api
 ## Running app.py (Server)
 ```
-python app.py
+python setup.py
 ```
 ## Running test.py (For testing)
 Example:
